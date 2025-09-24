@@ -6,9 +6,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import Icon from '@/components/ui/icon';
+import { useMinecraftSounds } from '@/hooks/useMinecraftSounds';
 
 function Index() {
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+  const { playClickSound, playHoverSound, playSuccessSound } = useMinecraftSounds();
   
   const serverStats = {
     online: 247,
@@ -36,6 +38,7 @@ function Index() {
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
+    playSuccessSound();
   };
 
   return (
@@ -118,7 +121,12 @@ function Index() {
                   
                   <Dialog>
                     <DialogTrigger asChild>
-                      <Button className="w-full minecraft-button text-lg py-6" size="lg">
+                      <Button 
+                        className="w-full minecraft-button text-lg py-6" 
+                        size="lg"
+                        onClick={() => playClickSound()}
+                        onMouseEnter={() => playHoverSound()}
+                      >
                         <Icon name="Play" size={20} className="mr-2" />
                         Подключиться к серверу
                       </Button>
@@ -148,6 +156,7 @@ function Index() {
                               variant="outline"
                               size="sm"
                               onClick={() => copyToClipboard(serverStats.ip)}
+                              onMouseEnter={() => playHoverSound()}
                               className="minecraft-button"
                             >
                               <Icon name="Copy" size={16} />
@@ -168,6 +177,7 @@ function Index() {
                               variant="outline"
                               size="sm"
                               onClick={() => copyToClipboard(serverStats.port.toString())}
+                              onMouseEnter={() => playHoverSound()}
                               className="minecraft-button"
                             >
                               <Icon name="Copy" size={16} />
@@ -298,7 +308,11 @@ function Index() {
                         top: `${region.y}%`,
                         transform: 'translate(-50%, -50%)'
                       }}
-                      onClick={() => setSelectedRegion(selectedRegion === region.id ? null : region.id)}
+                      onClick={() => {
+                        playClickSound();
+                        setSelectedRegion(selectedRegion === region.id ? null : region.id);
+                      }}
+                      onMouseEnter={() => playHoverSound()}
                     />
                   ))}
                 </div>
@@ -311,7 +325,11 @@ function Index() {
                       className={`minecraft-card cursor-pointer transition-all ${
                         selectedRegion === region.id ? 'ring-2 ring-primary' : ''
                       }`}
-                      onClick={() => setSelectedRegion(selectedRegion === region.id ? null : region.id)}
+                      onClick={() => {
+                        playClickSound();
+                        setSelectedRegion(selectedRegion === region.id ? null : region.id);
+                      }}
+                      onMouseEnter={() => playHoverSound()}
                     >
                       <CardContent className="p-4 text-center">
                         <div 
