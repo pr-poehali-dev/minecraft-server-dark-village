@@ -73,7 +73,7 @@ export default {
 				}
 			},
 			fontFamily: {
-				minecraft: ['Courier New', 'monospace']
+				minecraft: ['"Press Start 2P"', 'monospace']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
