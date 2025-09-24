@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -91,11 +91,9 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-mono;
     image-rendering: pixelated;
-    font-family: "Press Start 2P", monospace;
-    font-size: 14px;
-    line-height: 1.4;
+    font-family: "Courier Prime", "Courier New", monospace;
   }
 
   .minecraft-pixel {
