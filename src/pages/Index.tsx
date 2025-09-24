@@ -16,8 +16,8 @@ function Index() {
     uptime: "99.7%",
     tps: 19.8,
     version: "1.16.5 Forge",
-    ip: "play.darkvillage.ru",
-    port: 25565
+    ip: "Dark_Village.aternos.me",
+    port: 56287
   };
 
   const regions = [
